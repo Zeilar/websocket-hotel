@@ -1,0 +1,33 @@
+{
+	"sourceRoot": "packages/websocket-hotel/src",
+	"projectType": "library",
+	"targets": {
+		"lint": {
+			"executor": "@nrwl/linter:eslint",
+			"outputs": ["{options.outputFile}"],
+			"options": {
+				"lintFilePatterns": ["packages/websocket-hotel/**/*.ts"]
+			}
+		},
+		"test": {
+			"executor": "@nrwl/jest:jest",
+			"outputs": ["coverage/packages/websocket-hotel"],
+			"options": {
+				"jestConfig": "packages/websocket-hotel/jest.config.ts",
+				"passWithNoTests": true
+			}
+		},
+		"build": {
+			"executor": "@nrwl/js:tsc",
+			"outputs": ["{options.outputPath}"],
+			"options": {
+				"outputPath": "dist/packages/websocket-hotel",
+				"tsConfig": "packages/websocket-hotel/tsconfig.lib.json",
+				"packageJson": "packages/websocket-hotel/package.json",
+				"main": "packages/websocket-hotel/src/index.ts",
+				"assets": ["packages/websocket-hotel/*.md"]
+			}
+		}
+	},
+	"tags": []
+}
