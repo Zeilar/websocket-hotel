@@ -1,4 +1,16 @@
 {
 	"name": "websocket-hotel",
-	"version": "0.0.1"
+	"version": "0.0.1",
+	"license": "MIT",
+	"description": "Websocket room API.",
+	"keywords": [
+		"websocket",
+		"socket",
+		"room",
+		"typescript",
+		"ts"
+	],
+	"publishConfig": {
+		"access": "public"
+	}
 }
