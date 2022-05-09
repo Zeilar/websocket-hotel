@@ -16,9 +16,16 @@ const logger = pino({
 
 const ws = new Hotel({ port: 3334 });
 ws.on("connection", socket => {
-	console.log("here are the guests", ws.guestlist.length);
 	socket.on("message", data => {
-		console.log(data.toString());
+		const parsed = JSON.parse(data.toString());
+		switch (parsed.type) {
+			case "room:create-and-join":
+				const room = ws.buildRoom({ guests: [ws.guestlist[0]] });
+				ws.broadcaster
+					.to(ws.guestlist[0])
+					.send({ type: "room:enter", payload: { room } });
+				break;
+		}
 	});
 });
 
