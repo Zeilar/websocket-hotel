@@ -35,7 +35,7 @@ export class BroadcasterBuilder {
 
 	public send(data: any) {
 		this.guests.forEach(guest => {
-			guest.websocket.send(data);
+			guest.websocket.send(Buffer.from(JSON.stringify(data)));
 		});
 	}
 }
